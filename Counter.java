@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Counter {
 
     // 1. Dichiara qui le variabili di istanza private (es. il conteggio)
@@ -27,5 +29,29 @@ public class Counter {
     // 6. Riporta il contatore a zero
     public void reset() {
         // Inserisci qui la tua logica
+    }
+
+    // Non toccare il Main altrimenti la prova non verrà valutata
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Counter c = new Counter();
+
+        while (scanner.hasNext()) {
+            String comando = scanner.next();
+            
+            if (comando.equals("INC_UNO")) {
+                c.increment();
+            } else if (comando.equals("INC_N")) {
+                int n = scanner.nextInt();
+                c.increment(n);
+            } else if (comando.equals("RESET")) {
+                c.reset();
+            } else if (comando.equals("STAMPA")) {
+                System.out.println(c.getCount());
+            } else if (comando.equals("FINE")) {
+                break;
+            }
+        }
+        scanner.close();
     }
 }
